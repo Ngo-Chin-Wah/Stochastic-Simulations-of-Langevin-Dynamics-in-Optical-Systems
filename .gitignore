@@ -1,1 +1,35 @@
-*.DS_Store *.idea
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+db.sqlite3
+
+# Unit test / coverage reports
+.coverage
+htmlcov/
+*.pytest_cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.swp
+.DS_Store
