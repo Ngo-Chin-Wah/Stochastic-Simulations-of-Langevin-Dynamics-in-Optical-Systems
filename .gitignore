@@ -33,3 +33,6 @@ dist/
 *.tmp
 *.swp
 .DS_Store
+pdf/
+png/
+data/
