@@ -150,7 +150,7 @@ global r, omega, error_m, omega_f, F0, h_interpolate, noisiness, noisiness_f
 # Define physical parameters.
 m = 0.1  # Mass
 k = 1000.0  # Spring constant
-gamma = 0.5  # Damping coefficient
+gamma = 0.1  # Damping coefficient
 
 r = gamma / (2 * m)  # Damping ratio
 omega = (k / m) ** 0.5  # Natural frequency
@@ -168,8 +168,8 @@ h_interpolate = 0.0001  # Interpolation step size for smooth plots
 S0 = np.array([x0, v0])  # Initial state vector [position, velocity]
 error_m = 1e-6  # Error tolerance for adaptive integration
 F0 = 0.01  # Amplitude of the driving force
-noisiness = 1  # Noise factor for the system state
-noisiness_f = 1  # Noise factor for the driving force
+noisiness = 2  # Noise factor for the system state
+noisiness_f = 2  # Noise factor for the driving force
 
 # Calculate the linewidth and adjust the driving frequency.
 linewidth = (gamma / m) / (2 * np.pi)
@@ -255,7 +255,7 @@ plt.close()
 plt.plot(x_values_spline_noisy, m * v_values_spline_noisy, label='Noisy')
 plt.plot(x_values_spline_noiseless, m * v_values_spline_noiseless, label='Noiseless')
 plt.xlabel(r'Position(m)', usetex=True)
-plt.ylabel(r'Momentum', usetex=True)
+plt.ylabel(r'Momentum(kgms$^{-1}$)', usetex=True)
 plt.title(f'Phase Space Diagram; Detuned to {detuning_factor} Linewidth(s)', usetex=True)
 plt.grid(True)
 plt.tight_layout()
@@ -309,7 +309,7 @@ fig_phase = plt.figure()
 plt.plot(x_values_spline_noisy, m * v_values_spline_noisy, label='Noisy')
 plt.plot(x_values_spline_noiseless, m * v_values_spline_noiseless, label='Noiseless')
 plt.xlabel(r'Position(m)', usetex=True)
-plt.ylabel(r'Momentum', usetex=True)
+plt.ylabel(r'Momentum(kgms$^{-1}$)', usetex=True)
 plt.title(f'Phase Space Diagram; Detuned to {detuning_factor} Linewidth(s)', usetex=True)
 plt.grid(True)
 plt.tight_layout()
@@ -321,9 +321,9 @@ plt.close(fig_phase)
 fig_exp = plt.figure()
 plt.plot(t_values_spline, abs_position, 'b-', label='Absolute Position Data')
 plt.plot(t_values_spline, exponential(t_values_spline, *popt), 'r--', label='Fitted Exponential Envelope')
-plt.xlabel('Time (s)')
-plt.ylabel('Position (m)')
-plt.title('Position Time Series with Fitted Exponential Envelope')
+plt.xlabel(r'Time (s)', usetex=True)
+plt.ylabel(r'Position (m)', usetex=True)
+plt.title(r'Position Time Series with Fitted Exponential Envelope', usetex=True)
 plt.legend()
 fig_exp.savefig(os.path.join(png_dir, 'Figure_ExponentialFitting.png'))
 plt.close(fig_exp)
